@@ -112,3 +112,32 @@ ln -s /usr/local/bin/vim /usr/bin/vi
 
 reference:
 * https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
+
+## install node
+
+```
+curl -sL https://rpm.nodesource.com/setup_11.x | sudo bash -
+yum install -y nodejs
+```
+
+node and npm version
+```
+node --version
+```
+
+```
+output
+v11.12.0
+```
+
+```
+npm --version
+```
+
+```
+output
+6.7.0
+```
+
+reference:
+* https://linuxize.com/post/how-to-install-node-js-on-centos-7/
