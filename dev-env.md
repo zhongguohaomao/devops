@@ -141,3 +141,25 @@ output
 
 reference:
 * https://linuxize.com/post/how-to-install-node-js-on-centos-7/
+
+## install git
+
+Go to https://git-scm.com/ and check out the latest version of Git
+```
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.21.0.tar.gz
+tar zxvf git-2.21.0.tar.gz
+```
+
+```
+yum groupinstall 'Development Tools'
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-CPAN perl-devel
+```
+
+compile
+```
+cd git-2.21.0
+make configure
+./configure --prefix=/usr/local
+make all
+make install
+```
