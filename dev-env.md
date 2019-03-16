@@ -174,3 +174,31 @@ tar -C zxvf go1.12.1.linux-amd64.tar.gz
 ```
 export PATH=$PATH:/usr/local/go/bin
 ```
+
+## install tmux
+
+```
+yum -y install libevent-devel
+```
+
+```
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure && make
+cp tmux /usr/local/bin
+```
+
+install [oh my tmux](https://github.com/gpakosz/.tmux)
+```
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+```
+
+tmux should be install the master node(like mac), which one ssh to other nodes.
+
+reference:
+* https://segmentfault.com/a/1190000013012901
+* https://github.com/gpakosz/.tmux
