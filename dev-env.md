@@ -35,3 +35,80 @@ modify `~/.zshrc`
 ```
 plugins=(git autojump)
 ```
+
+## install python3
+
+```
+yum install python-pip -y
+yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make libffi-devel -y
+wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+tar zxvf Python-3.7.2.tgz
+cd Python-3.7.2
+./configure prefix=/usr/local/python3
+make && make install
+```
+
+add symbol link
+```
+ln -s /usr/local/python3/bin/python3.7 /usr/bin/python3.7
+ln -s /usr/local/python3/bin/pip3.7 /usr/bin/pip3.7
+```
+
+change python2 to python3.7
+```
+rm /usr/bin/python
+ln -s /usr/bin/python3.7 /usr/bin/python
+```
+
+change yum and autojump python
+```
+vi /usr/bin/yum
+change #!/usr/bin/python to #!/usr/bin/python2
+vi /usr/libexec/urlgrabber-ext-down
+change #!/usr/bin/python to #!/usr/bin/python2
+vi /usr/bin/autojump
+change #!/usr/bin/python to #!/usr/bin/python2
+```
+
+reference:
+* https://segmentfault.com/a/1190000015628625
+
+## install vim
+
+```
+yum install -y ruby ruby-devel lua lua-devel luajit \
+luajit-devel ctags git python python-devel \
+python3 python3-devel tcl-devel \
+perl perl-devel perl-ExtUtils-ParseXS \
+perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
+perl-ExtUtils-Embed
+```
+
+```
+git clone https://github.com/vim/vim.git
+cd vim
+./configure --with-features=huge \
+            --enable-multibyte \
+	    --enable-rubyinterp=yes \
+	    --enable-pythoninterp=yes \
+	    --with-python-config-dir=/usr/lib64/python2.7/config \
+	    --enable-python3interp=yes \
+	    --with-python3-config-dir=/usr/local/python3/lib/python3.7/config \
+	    --enable-perlinterp=yes \
+	    --enable-luainterp=yes \
+            --enable-gui=gtk2 \
+            --enable-cscope \
+	   --prefix=/usr/local
+
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
+make install
+```
+
+change vi lin to vim
+```
+mv /usr/bin/vi /usr/bin/vi~
+ln -s /usr/local/bin/vim /usr/bin/vi
+```
+
+reference:
+* https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
