@@ -44,8 +44,13 @@ yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel read
 wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
 tar zxvf Python-3.7.2.tgz
 cd Python-3.7.2
-./configure prefix=/usr/local/python3
+./configure --enable-shared prefix=/usr/local/python
 make && make install
+```
+
+add dynamic lib
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/python3/lib
 ```
 
 add symbol link
