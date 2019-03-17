@@ -30,3 +30,10 @@ vi
 ```
 :Ack some_keyword_to_search
 ```
+
+## fatih/vim-go
+
+set GOPATH and vi
+``
+:GoInstallBinaries
+``
