@@ -19,3 +19,14 @@ Compiling YCM with semantic support for C-family languages through experimental 
 ```
 ./install.py
 ```
+
+## mileszs/ack.vim
+
+```
+yum install ack -y
+```
+
+vi
+```
+:Ack some_keyword_to_search
+```
