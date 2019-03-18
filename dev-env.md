@@ -202,8 +202,6 @@ ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
 ```
 
-tmux should be install the master node(like mac), which one ssh to other nodes.
-
 reference:
 * https://segmentfault.com/a/1190000013012901
 * https://github.com/gpakosz/.tmux
