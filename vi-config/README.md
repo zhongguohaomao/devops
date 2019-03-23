@@ -31,9 +31,33 @@ vi
 :Ack some_keyword_to_search
 ```
 
-## fatih/vim-go
+## faith/vim-go
 
 set GOPATH and vi
 ``
 :GoInstallBinaries
 ``
+
+## c++ dev env
+
+cscope and ctags
+```
+alias mkcscopefile='ack -f --cpp "$(pwd)" > cscope.files'
+alias mktag='ctags -R;cscope -Rbq'
+```
+
+goto system include, generate index
+```
+cd /usr/local/include(you project include path)
+```
+
+mkcsopefile && mktag
+
+add [cscope_macros.vim](https://github.com/vim-scripts/cscope_macros.vim) to ~/.vim/plugin
+
+add `cs add /usr/local/include/cscope.out` below `cs add csope.out`
+
+goto project dir
+```
+mkcsopefile && mktag
+```
