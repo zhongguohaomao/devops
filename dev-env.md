@@ -221,3 +221,44 @@ cp .tmux/.tmux.conf.local .
 reference:
 * https://segmentfault.com/a/1190000013012901
 * https://github.com/gpakosz/.tmux
+
+## install llvm and clang
+first install cmake and ninja
+
+### install [cmake](https://github.com/Kitware/CMake)
+
+```
+./bootstrap && make && sudo make install
+```
+
+### install [ninja](https://github.com/ninja-build/ninja)
+
+```
+git checkout release
+./configure.py --bootstrap
+cp ninja /usr/local/bin
+```
+
+### install clang
+
+sufficient memery is needed(at least 8G maybe), or some error will occur(collect2: fatal error: ld terminated with signal 9)
+
+
+centos, update gcc to 5.3
+```
+yum install centos-release-scl -y
+yum install devtoolset-7 -y
+scl enable devtoolset-7 zsh
+gcc --version
+```
+
+build clang
+```
+git clone https://github.com/llvm/llvm-project.git
+cd llvm-project
+mkdir build
+cmake -G Ninja -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSETION=on ../llvm
+cmake --build .
+cp -r lib64/python2.7 lib/python.2.7(maybe optional)
+cmake --build . -- target install
+```
