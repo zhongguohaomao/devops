@@ -241,7 +241,7 @@ cp ninja /usr/local/bin
 
 ### install clang
 
-sufficient memery is needed(at least 8G maybe), or some error will occur(collect2: fatal error: ld terminated with signal 9)
+sufficient memory is needed(at least 8G maybe), or some error will occur(collect2: fatal error: ld terminated with signal 9)
 
 
 centos, update gcc to 5.3
@@ -257,8 +257,10 @@ build clang
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
 mkdir build
-cmake -G Ninja -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSETION=on ../llvm
+cmake -G Ninja -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release ../llvm
 cmake --build .
 cp -r lib64/python2.7 lib/python.2.7(maybe optional)
-cmake --build . -- target install
+cmake --build . --target install
 ```
+
+if you want use `lldb` debug, do not add `-DCMAKE_BUILD_TYPE=Release`
