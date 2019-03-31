@@ -264,3 +264,39 @@ cmake --build . --target install
 ```
 
 if you want use `lldb` debug, do not add `-DCMAKE_BUILD_TYPE=Release`
+
+### install nginx
+
+```
+yum install epel-release
+yum install nginx
+```
+
+nginx ssl use [certbot](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
+
+```
+yum -y install yum-utils openssl-devel
+yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+yum install certbot python2-certbot-nginx
+```
+
+if some error
+```
+ImportError: No module named 'requests.packages.urllib3'
+```
+
+resolve
+```
+pip install requests urllib3 pyOpenSSL --force --upgrade
+pip install --upgrade --force-reinstall 'requests==2.6.0'
+```
+
+cert
+```
+certbot --nginx certonly
+```
+
+after 90 days, need renew
+```
+certbot renew --dry-run
+```
